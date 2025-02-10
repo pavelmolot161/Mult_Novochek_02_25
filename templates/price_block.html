@@ -1,0 +1,133 @@
+
+
+<!-- templates/price_block.html -->
+<div class="price-block">
+    <div class="price">Цена: {{ price }} руб/час</div>
+    <button onclick="showPhone(this)">Показать номер</button>
+    <div class="phone-number" style="display: none;">
+        <p>Позвонить на номер: <span>{{ phone }}</span></p>
+        <button class="call-button" onclick="makeCall('{{ phone }}')">Позвонить</button>
+    </div>
+</div>
+
+<script>
+    function showPhone(button) {
+        const phoneDiv = button.nextElementSibling; // Получаем следующий элемент (phone-number)
+        const isVisible = phoneDiv.style.display === 'block';
+
+        // Если номер скрыт, показываем его
+        if (!isVisible) {
+            phoneDiv.style.display = 'block';
+
+            // Устанавливаем таймер на 5 секунд для скрытия номера
+            setTimeout(() => {
+                phoneDiv.style.display = 'none';
+            }, 5000);
+        } else {
+            // Если номер уже виден, скрываем его
+            phoneDiv.style.display = 'none';
+        }
+    }
+
+    function makeCall(phone) {
+        window.location.href = 'tel:' + phone;
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--&lt;!&ndash; templates/price_block.html &ndash;&gt;-->
+<!--<div class="price-block">-->
+<!--    <div class="price">Цена: {{ price }} руб/час</div>-->
+<!--    <button onclick="showPhone(this)">Показать номер</button>-->
+<!--    <div class="phone-number" style="display: none;">-->
+<!--        <p>Позвонить на номер: <span>{{ phone }}</span></p>-->
+<!--        <button class="call-button" onclick="makeCall('{{ phone }}')">Позвонить</button>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    function showPhone(button) {-->
+<!--        const phoneDiv = button.nextElementSibling; // Получаем следующий элемент (phone-number)-->
+<!--        if (phoneDiv.style.display === 'none') {-->
+<!--            phoneDiv.style.display = 'block';-->
+<!--        } else {-->
+<!--            phoneDiv.style.display = 'none';-->
+<!--        }-->
+<!--    }-->
+
+<!--    function makeCall(phone) {-->
+<!--        window.location.href = 'tel:' + phone;-->
+<!--    }-->
+<!--</script>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--&lt;!&ndash; templates/price_block.html &ndash;&gt;-->
+<!--<div class="price-block">-->
+<!--    <div class="price" style="color: black;">Цена: {{ price }} руб/час</div> &lt;!&ndash; Черный цвет для цены &ndash;&gt;-->
+<!--    <button class="show-phone-button" onclick="showPhone('{{ phone }}')">Показать номер</button> &lt;!&ndash; Кнопка для показа номера &ndash;&gt;-->
+<!--    <div class="phone-number" style="display: none;">-->
+<!--        <p style="color: white;">Позвонить на номер: <span>{{ phone }}</span></p>-->
+<!--        <button class="call-button" onclick="makeCall('{{ phone }}')">Позвонить</button>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    function showPhone(phone) {-->
+<!--        const phoneDiv = document.querySelector('.phone-number');-->
+<!--        if (phoneDiv.style.display === 'none') {-->
+<!--            phoneDiv.style.display = 'block';-->
+<!--        } else {-->
+<!--            phoneDiv.style.display = 'none';-->
+<!--        }-->
+<!--    }-->
+
+<!--    function makeCall(phone) {-->
+<!--        window.location.href = 'tel:' + phone;-->
+<!--    }-->
+<!--</script>-->
