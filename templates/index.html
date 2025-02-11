@@ -4,10 +4,15 @@
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     {% include 'meta_tags.html' %}
+
 </head>
 <body>
     <header>
         <h1 class="header-title">Аренда малогабаритной спецтехники в Новочеркасске</h1>
+        <!-- Новый заголовок под основным -->
+        <h3 class="animated-text">
+            <span class="warning">ВНИМАНИЕ ЗАКАЗЧИКАМ !!!</span> <span class="info">для Вашего удобства, сайт напрямую соединяет с исполнителями и перевозчиками.</span>
+        </h3>
     </header>
 
     <div class="container">
@@ -58,8 +63,81 @@
     </div>
 
     <footer>
-        <p class="small"><a href="https://t.me/+uk49Ju1jlWI2MDAy" target="_blank">Создание сайтов на заказ по ссылке в телеграмм</a></p>
+        <p class="small"><a href="https://t.me/+uk49Ju1jlWI2MDAy" target="_blank">Создание сайтов на заказ.</a></p>
         <p class="small">2025 г.</p>
     </footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
+<!--    {% include 'meta_tags.html' %}-->
+<!--</head>-->
+<!--<body>-->
+<!--    <header>-->
+<!--        <h1 class="header-title">Аренда малогабаритной спецтехники в Новочеркасске</h1>-->
+<!--    </header>-->
+
+<!--    <div class="container">-->
+<!--        <div class="left-side">-->
+<!--            <div class="item">-->
+<!--                <img src="{{ url_for('static', filename='photo1.png') }}" alt="Манипулятор">-->
+<!--                {% set title = 'Манипулятор' %} &lt;!&ndash; Название объекта &ndash;&gt;-->
+<!--                {% set price = 3000 %}-->
+<!--                {% set phone = '8-918-572-90-90' %}-->
+<!--                {% include 'price_block.html' %}-->
+<!--            </div>-->
+
+<!--            <div class="item">-->
+<!--                <img src="{{ url_for('static', filename='photo2.png') }}" alt="Мини экскаватор" />-->
+<!--                {% set title = 'Мини экскаватор' %} &lt;!&ndash; Название объекта &ndash;&gt;-->
+<!--                {% set price = 2500 %}-->
+<!--                {% set phone = 'Саня макар' %}-->
+<!--                {% include 'price_block.html' %}-->
+<!--            </div>-->
+
+<!--            <div class="item">-->
+<!--                <img src="{{ url_for('static', filename='photo3.png') }}" alt="Эвакуатор" />-->
+<!--                {% set title = 'Эвакуатор' %} &lt;!&ndash; Название объекта &ndash;&gt;-->
+<!--                {% set price = 4500 %}-->
+<!--                {% set phone = 'Макс' %}-->
+<!--                {% include 'price_block.html' %}-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <img src="{{ url_for('static', filename='photo4.jpg') }}" alt="Мини самосвал" />-->
+<!--                {% set title = 'Мини самосвал' %} &lt;!&ndash; Название объекта &ndash;&gt;-->
+<!--                {% set price = 3500 %}-->
+<!--                {% set phone = 'Никита' %}-->
+<!--                {% include 'price_block.html' %}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="right-side">-->
+<!--            <div class="text-content">-->
+<!--                <h2>Сдача в аренду малогабаритной техники:</h2>-->
+<!--                <p class="red">С нами выгодно, удобно и экономно.</p>-->
+<!--                <ul>-->
+<!--                    <li>манипулятор до 5 тонн, стрела 10-12 метров;</li>-->
+<!--                    <li>мини экскаватор стрела 4 метра;</li>-->
+<!--                    <li>эвакуатор до 3500 кг.</li>-->
+<!--                    <li>самосвал до 2500 кг.</li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <footer>-->
+<!--        <p class="small"><a href="https://t.me/+uk49Ju1jlWI2MDAy" target="_blank">Создание сайтов на заказ по ссылке в телеграмм</a></p>-->
+<!--        <p class="small">2025 г.</p>-->
+<!--    </footer>-->
+<!--</body>-->
+<!--</html>-->
