@@ -1,3 +1,5 @@
+
+
 body {
     font-family: sans-serif; /* Устанавливает шрифт для всего документа */
     margin: 0; /* Убирает отступы по умолчанию */
@@ -30,16 +32,29 @@ header {
     background-color: #FFA500; /* Светло-оранжевый фон для кнопки */
     color: white; /* Белый текст */
     border: 2px solid black; /* Черный кант */
-    padding: 5px 10px; /* Отступы для кнопки */
+    padding: 10px 10px; /* Отступы для кнопки */
     cursor: pointer; /* Указатель при наведении */
 }
+
+.button {
+    background-color: white; /* Белый фон для кнопки "Показать номер" */
+    color: black; /* Черный текст */
+    border: 2px solid black; /* Черный кант */
+    padding: 20px 20px; /* Отступы для кнопки */
+    cursor: pointer; /* Указатель при наведении */
+    width: 150px; /* Ширина кнопки */
+    height: 40px; /* Высота кнопки */
+}
+
 
 .show-phone-button {
     background-color: white; /* Белый фон для кнопки "Показать номер" */
     color: black; /* Черный текст */
     border: 2px solid black; /* Черный кант */
-    padding: 5px 10px; /* Отступы для кнопки */
+    padding: 10px 10px; /* Отступы для кнопки */
     cursor: pointer; /* Указатель при наведении */
+    width: 150px; /* Ширина кнопки */
+    height: 40px; /* Высота кнопки */
 }
 
 .call-button:hover {
@@ -68,6 +83,11 @@ header {
     padding: 10px; /* Добавляет отступы внутри блока цены */
     margin-top: 10px; /* Добавляет верхний отступ между блоками цены */
 }
+.price-block .show-phone-button {
+    width: var(--button-width-pc);
+    height: var(--button-height-pc);
+
+}
 
 .right-side {
     width: 50%; /* Устанавливает ширину правой стороны на 50% */
@@ -92,17 +112,80 @@ footer {
     width: 100%;
 }
 
+/* Стили для кнопок и аватарок */
+.button, .call-icon {
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Объемный эффект */
+    transition: transform 0.1s ease, box-shadow 0.1s ease; /* Плавный переход */
+}
+
+.button:hover, .call-icon:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Увеличение тени при наведении */
+}
+
+.button:active, .call-icon:active {
+    transform: scale(0.95); /* Эффект "пригибания" при нажатии */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Уменьшение тени при нажатии */
+}
+
 .small {
     font-size: smaller; /* Уменьшает размер шрифта для элементов с классом .small */
 }
 
-/* Адаптивность */
+:root {
+    --button-width-pc: 150px; /* Ширина кнопки для ПК */
+    --button-height-pc: 30px; /* Высота кнопки для ПК */
+    --button-width-mobile: 120px; /* Ширина кнопки для мобильных устройств */
+    --button-height-mobile: 20px; /* Высота кнопки для мобильных устройств */
+}
+
+.call-button, .show-phone-button {
+    width: var(--button-width-pc); /* Используем переменные для ПК */
+    height: var(--button-height-pc); /* Используем переменные для ПК */
+}
+
+/* Стили для кнопок и аватарок */
+.button, .call-icon, .messenger-icon {
+    border-radius: 10px; /* Скругление углов */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Объемный эффект */
+    transition: transform 0.1s ease, box-shadow 0.1s ease; /* Плавный переход */
+}
+
+.button:hover, .call-icon:hover, .messenger-icon:hover {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Увеличение тени при наведении */
+}
+
+.button:active, .call-icon:active, .messenger-icon:active {
+    transform: scale(0.95); /* Эффект "пригибания" при нажатии */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Уменьшение тени при нажатии */
+}
+
+/* Мобильные стили */
+@media (max-width: 768px) {
+    .call-button, .show-phone-button {
+        width: var(--button-width-mobile); /* Используем переменные для мобильных */
+        height: var(--button-height-mobile); /* Используем переменные для мобильных */
+    }
+}
+
+/* Mедиа-запроса для мобильных устройств */
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; /* Изменяет направление флекс-контейнера на колонку для мобильных устройств */
+        flex-direction: column; /* Изменяем направление на колонку */
         height: auto; /* Высота будет адаптивной */
     }
     .left-side, .right-side {
-        width: 100%; /* Устанавливает ширину левой и правой стороны на 100% для мобильных устройств */
+        width: 100%; /* Ширина на 100% для мобильных */
+    }
+    .header-title {
+        font-size: 1.5em; /* Уменьшаем размер заголовка в два раза */
+    }
+    .item img {
+        max-width: 100%; /* Изображения занимают 100% ширины */
+        height: auto; /* Сохраняем пропорции */
+    }
+    footer {
+        text-align: center; /* Центрируем текст в подвале */
     }
 }
+

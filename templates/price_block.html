@@ -1,12 +1,23 @@
 
-
-<!-- templates/price_block.html -->
 <div class="price-block">
+    <div class="item-title">{{ title }}</div> <!-- Добавлено название объекта -->
     <div class="price">Цена: {{ price }} руб/час</div>
-    <button onclick="showPhone(this)">Показать номер</button>
-    <div class="phone-number" style="display: none;">
+    <button class="button" onclick="showPhone(this)">Показать номер</button>
+    <div class="phone-number" style="display: none;"> <!-- Убедитесь, что этот элемент скрыт по умолчанию -->
         <p>Позвонить на номер: <span>{{ phone }}</span></p>
-        <button class="call-button" onclick="makeCall('{{ phone }}')">Позвонить</button>
+        <!-- Заменяем кнопку на изображение для звонка -->
+        <img src="{{ url_for('static', filename='phone-icon_2.png') }}" alt="Позвонить" class="call-icon"
+             onclick="makeCall('{{ phone }}')" style="cursor: pointer; width: 130px; height: 35px;">
+        <!-- Добавляем иконку WhatsApp с ссылкой -->
+        <a href="https://wa.me/{{ phone }}" target="_blank">
+            <img src="{{ url_for('static', filename='whatsapp-icon.png') }}" alt="WhatsApp" class="messenger-icon"
+                 style="width: 40px; margin-left: 20px;">
+        </a>
+        <!-- Добавляем иконку Telegram с ссылкой -->
+        <a href="https://t.me/your_telegram_link" target="_blank">
+            <img src="{{ url_for('static', filename='telegram-icon.png') }}" alt="Telegram" class="messenger-icon"
+                 style="width: 40px; margin-left: 20px;">
+        </a>
     </div>
 </div>
 
@@ -17,12 +28,11 @@
 
         // Если номер скрыт, показываем его
         if (!isVisible) {
-            phoneDiv.style.display = 'block';
-
-            // Устанавливаем таймер на 5 секунд для скрытия номера
+            phoneDiv.style.display = 'block'; // Показываем номер
+            // Устанавливаем таймер на 7 секунд для скрытия номера
             setTimeout(() => {
                 phoneDiv.style.display = 'none';
-            }, 5000);
+            }, 7000);
         } else {
             // Если номер уже виден, скрываем его
             phoneDiv.style.display = 'none';
@@ -33,6 +43,74 @@
         window.location.href = 'tel:' + phone;
     }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--&lt;!&ndash; templates/price_block.html &ndash;&gt;-->
+<!--<div class="price-block">-->
+<!--    <div class="price">Цена: {{ price }} руб/час</div>-->
+<!--    <button onclick="showPhone(this)">Показать номер</button>-->
+<!--    <div class="phone-number" style="display: none;">-->
+<!--        <p>Позвонить на номер: <span>{{ phone }}</span></p>-->
+<!--        <button class="call-button" onclick="makeCall('{{ phone }}')">Позвонить</button>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;Для мобильных устройств&ndash;&gt;-->
+<!--&lt;!&ndash;<button style="padding: 10px 20px; font-size: 16px;">Показать номер</button>&ndash;&gt;-->
+<!--&lt;!&ndash;<button style="padding: 10px 20px; font-size: 16px;">Позвонить</button>&ndash;&gt;-->
+
+<!--<div class="phone-number" style="display: none;">-->
+<!--    <p>Позвонить на номер: <span>{{ phone }}</span></p>-->
+<!--    <button class="call-button" onclick="makeCall('{{ phone }}')">Позвонить</button>-->
+<!--    <a href="https://wa.me/{{ phone }}" target="_blank">-->
+<!--        <img src="{{ url_for('static', filename='whatsapp-icon.png') }}" alt="WhatsApp" style="width: 30px; margin-left: 10px;">-->
+<!--    </a>-->
+<!--    <a href="https://t.me/your_telegram_link" target="_blank">-->
+<!--        <img src="{{ url_for('static', filename='telegram-icon.png') }}" alt="Telegram" style="width: 30px; margin-left: 10px;">-->
+<!--    </a>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    function showPhone(button) {-->
+<!--        const phoneDiv = button.nextElementSibling; // Получаем следующий элемент (phone-number)-->
+<!--        const isVisible = phoneDiv.style.display === 'block';-->
+
+<!--        // Если номер скрыт, показываем его-->
+<!--        if (!isVisible) {-->
+<!--            phoneDiv.style.display = 'block';-->
+
+<!--            // Устанавливаем таймер на 5 секунд для скрытия номера-->
+<!--            setTimeout(() => {-->
+<!--                phoneDiv.style.display = 'none';-->
+<!--            }, 5000);-->
+<!--        } else {-->
+<!--            // Если номер уже виден, скрываем его-->
+<!--            phoneDiv.style.display = 'none';-->
+<!--        }-->
+<!--    }-->
+
+<!--    function makeCall(phone) {-->
+<!--        window.location.href = 'tel:' + phone;-->
+<!--    }-->
+<!--</script>-->
 
 
 
