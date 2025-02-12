@@ -149,12 +149,12 @@ header {
 }
 
 /* Мобильные стили */
-@media (max-width: 768px) {
-    .call-button, .show-phone-button {
-        width: var(--button-width-mobile); /* Используем переменные для мобильных */
-        height: var(--button-height-mobile); /* Используем переменные для мобильных */
-    }
-}
+/*@media (max-width: 768px) {
+/*    .call-button, .show-phone-button {
+/*        width: var(--button-width-mobile); /* Используем переменные для мобильных */
+/*       height: var(--button-height-mobile); /* Используем переменные для мобильных */
+/*    }
+/*}
 
 /* Добавляем стили для анимации текста */
 
@@ -176,6 +176,8 @@ header {
 .info {
     color: #FFD700; /* жолтый цвет для остального текста */
 }
+
+
 
 /* Добавляем стили для анимации текста */
 .animated-text {
@@ -200,6 +202,13 @@ header {
     }
 }
 
+.highlighted-text {
+    border: 2px solid red; /* Красный кантик */
+    background-color: yellow; /* Желтый фон */
+    padding: 10px; /* Отступы вокруг текста */
+    display: inline-block; /* Чтобы кантик обрамлял текст */
+}
+
 
 /* Mедиа-запроса для мобильных устройств */
 @media (max-width: 768px) {
@@ -221,6 +230,9 @@ header {
         text-align: center; /* Центрируем текст в подвале */
     }
 }
+
+.dark-blue {
+    color: #003366; /* Темно-синий цвет */
 
 footer {
     background-color: #eee; /* Устанавливает светло-серый фон для подвала */

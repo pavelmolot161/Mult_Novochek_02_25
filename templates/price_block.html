@@ -5,9 +5,11 @@
     <button class="button" onclick="showPhone(this)">Показать номер</button>
     <div class="phone-number" style="display: none;"> <!-- Убедитесь, что этот элемент скрыт по умолчанию -->
         <p>Позвонить на номер: <span>{{ phone }}</span></p>
+
         <!-- Заменяем кнопку на изображение для звонка -->
         <img src="{{ url_for('static', filename='phone-icon_2.png') }}" alt="Позвонить" class="call-icon"
              onclick="makeCall('{{ phone }}')" style="cursor: pointer; width: 130px; height: 35px;">
+
         <!-- Добавляем иконку WhatsApp с ссылкой -->
         <a href="https://wa.me/{{ phone }}" target="_blank">
             <img src="{{ url_for('static', filename='whatsapp-icon.png') }}" alt="WhatsApp" class="messenger-icon"
