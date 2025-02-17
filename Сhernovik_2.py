@@ -6,11 +6,18 @@
 #                 >>> http:// 192.168.0.108:5000      Запуск с телефона         при запуске с компа через сеть wifi
 #                 >>> http://31.130.150.56:5000                                 при запуске с хостинга
 #
+#                 >>> http://127.0.0.1:443                                      изменен порт - ???
+#                 >>> http://31.130.150.56:443                                  изменен порт    при запуске с хостинга
+#
 # Доступ к swagger
 #                 >>> http://localhost:5000/apidocs/                            при запуске с компа через сеть wifi
 #                 >>> http://31.130.150.56:5000/apidocs/                        при запуске с хостинга
 
 # Сессия =  218304.session_TW_Mult_Novochek ### (02/15/2025 11:29:55 AM)        (Detached)
+
+# Домен time web spetstehnika-mini-novocherkassk.ru              (15.02.25)
+# Домен time web спецтехника-мини-новочеркасск.рф                (15.02.25)
+
 
 #____________________________________________________________________________________________________________________
 
@@ -72,6 +79,132 @@
 
 #           >>> screen -ls
 
+# Установка SQLAlchemy для работы в базе данных
+#           >>> pip install Flask SQLAlchemy
+
+# Обновите код: Выполните команды для обновления Вашего репозитория:
+#           >>> git fetch origin
+#           >>> git pull origin main
+
+# Подключение к сессии
+#           >>> screen -r 218304
+
+# Отключение или остановка приложения в сессии
+#           нажать Ctrl + C
+
+# Запуск приложения внутри сессии:
+# После запуска сессии Вы можете запустить Ваше приложение, например:
+#           >>> python main.py
+
+# Отсоединение от сессии:
+# Нажмите Ctrl + A, затем D. Это сочетание клавиш позволяет отсоединиться от текущей сессии screen,
+# не останавливая выполнение программы.
+
+# Шаги по настройке Nginx для Ваших доменов
+# Создайте конфигурационный файл для Вашего домена
+# Создайте новый файл конфигурации для каждого из Ваших доменов. Например, создадим файл для spetstehnika-mini-novocherkassk.ru:
+
+#             >>> sudo nano /etc/nginx/sites-available/spetstehnika-mini-novocherkassk.ru
+#             >>> sudo nano /etc/nginx/sites-available/спецтехника-мини-новочеркасск.рф
+
+### вставляем этот код:
+# server {
+#     listen 80;
+#     server_name спецтехника-мини-новочеркасск.рф;
+#
+#     location / {
+#         proxy_pass http://31.130.150.56:443;  # Укажите порт Вашего приложения
+#         proxy_set_header Host $host;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header X-Forwarded-Proto $scheme;
+#     }
+# }
+
+# Если Вы закончили редактирование конфигурации, сохраните файл и выйдите из редактора. Для этого:
+#
+#             >>> Нажмите Ctrl + O (Write Out) для сохранения.
+#             >>> Нажмите Enter, чтобы подтвердить имя файла.
+#             >>> Нажмите Ctrl + X (Exit) для выхода из редактора.
+
+# Проверьте конфигурацию снова:
+# После внесения изменений снова проверьте конфигурацию:
+
+#             >>> sudo nginx -t
+
+# Перезапустите Nginx:
+# Если тест прошел успешно, перезапустите Nginx:
+#             >>> sudo systemctl restart nginx
+
+# Шаги для настройки HTTPS (SSL)
+# Получение SSL-сертификата:
+# Вы можете использовать Let's Encrypt для получения бесплатного SSL-сертификата. Убедитесь, что у Вас установлен certbot:
+
+#           >>> sudo apt update
+#           >>> sudo apt install certbot python3-certbot-nginx
+# Получение сертификата:
+# Запустите следующую команду для автоматического получения и установки сертификата:
+
+#           >>> sudo certbot --nginx -d spetstehnika-mini-novocherkassk.ru -d спецтехника-мини-новочеркасск.рф
+# Certbot автоматически изменит Ваши конфигурационные файлы Nginx и добавит необходимые строки для SSL.
+
+# Чтобы преобразовать Ваш домен в Punycode, Вы можете использовать онлайн-конвертер или воспользоваться командой в
+# терминале, если у Вас установлен пакет idn2. Вот как это сделать:
+# Установите idn2, если он еще не установлен:
+#          >>> sudo apt install idn2
+
+# Преобразуйте Ваш домен в Punycode:
+#          >>> idn2 спецтехника-мини-новочеркасск.рф ### выдало
+# Установите SSL-сертификаты с помощью Certbot:
+#          >>> sudo certbot --nginx -d spetstehnika-mini-novocherkassk.ru -d xn-----6kccjoaewcauhbwlgctbf3bevaf6fza0c.xn--p1ai
+
+# (Y)es/(N)o: n
+# Account registered.
+# Requesting a certificate for spetstehnika-mini-novocherkassk.ru and xn-----6kccjoaewcauhbwlgctbf3bevaf6fza0c.xn--p1ai
+#
+# Successfully received certificate.
+# Certificate is saved at: /etc/letsencrypt/live/spetstehnika-mini-novocherkassk.ru/fullchain.pem
+# Key is saved at:         /etc/letsencrypt/live/spetstehnika-mini-novocherkassk.ru/privkey.pem
+# This certificate expires on 2025-05-17.
+# These files will be updated when the certificate renews.
+# Certbot has set up a scheduled task to automatically renew this certificate in the background.
+#
+# Deploying certificate
+# Successfully deployed certificate for spetstehnika-mini-novocherkassk.ru to /etc/nginx/sites-enabled/spetstehnika-mini-novocherkassk.ru
+# Successfully deployed certificate for xn-----6kccjoaewcauhbwlgctbf3bevaf6fza0c.xn--p1ai to /etc/nginx/sites-enabled/default
+# Congratulations! You have successfully enabled HTTPS on https://spetstehnika-mini-novocherkassk.ru and https://xn-----6kccjoaewcauhbwlgctbf3bevaf6fza0c.xn--p1ai
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# If you like Certbot, please consider supporting our work by:
+#  * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+#  * Donating to EFF:                    https://eff.org/donate-le
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# root@4171473-in62550:~/bot_Ava/TW_Mult_Novochek_02_25/Mult_Novochek_02_25#
+'''
+Эта информация является результатом успешного выполнения команды Certbot для получения и установки SSL-сертификатов для Ваших доменов. Давайте разберем ключевые моменты:
+
+Регистрация аккаунта:
+
+Certbot подтвердил, что Ваш аккаунт зарегистрирован. Это необходимо для получения сертификатов и получения уведомлений о их истечении.
+Запрос сертификата:
+
+Certbot запросил сертификаты для двух доменов: spetstehnika-mini-novocherkassk.ru и xn-----6kccjoaewcauhbwlgctbf3bevaf6fza0c.xn--p1ai.
+Успешное получение сертификата:
+
+Сертификат был успешно получен и сохранен по следующим путям:
+Полная цепочка сертификатов: /etc/letsencrypt/live/spetstehnika-mini-novocherkassk.ru/fullchain.pem
+Закрытый ключ: /etc/letsencrypt/live/spetstehnika-mini-novocherkassk.ru/privkey.pem
+Также указано, что сертификат истекает 17 мая 2025 года.
+Автоматическое обновление:
+
+Certbot настроил задачу для автоматического обновления сертификатов в фоновом режиме, что означает, что Вам не нужно будет вручную обновлять сертификаты, когда они истекут.
+Развертывание сертификата:
+
+Сертификат был успешно развернут для spetstehnika-mini-novocherkassk.ru и для второго домена. Это означает, что Nginx теперь будет использовать эти сертификаты для обеспечения HTTPS-соединений.
+Поздравление:
+
+Certbot поздравляет Вас с успешным включением HTTPS для указанных доменов. Это означает, что Ваши сайты теперь защищены и могут использовать безопасные соединения.
+Если у Вас есть дополнительные вопросы или Вам нужна помощь с конфигурацией, не стесняйтесь спрашивать!'''
 
 
 
@@ -396,10 +529,12 @@ se a production WSGI server instead.
 ######################################################################################################################
 ######################################################################################################################
 
-# Работа c, БОТОМ с ПК
+# ОТКАТ ИЗМЕНЕНИЙ:
+# Если Вам нужно откатить изменения,
+# Вы можете использовать команды
+#                     >>> git checkout
+#                     или
+#                     >>> git revert
+#                     в зависимости от того,
+# хотите ли Вы просто вернуться к предыдущей версии или создать новый коммит, отменяющий изменения.
 
-# Для доступа к Swagger UI перейдите по адресу:
-#         >>> http://localhost:5000/swagger  ### - РАБОТАЕТ
-
-# Проверка работы бота на локальном уровне:
-#         >>> http://localhost:5000/start    ### - РАБОТАЕТ
